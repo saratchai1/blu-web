@@ -1,0 +1,17 @@
+{
+  "name": "blu-mangrove",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An original, dependency-free WebGL2 mangrove backdrop.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist",
+    "test": "node --test tests/*.test.mjs",
+    "build:standalone": "node scripts/standalone.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
