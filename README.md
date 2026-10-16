@@ -2,6 +2,13 @@
 
 ฉากหลังป่าชายเลน 3D เต็มจอ ตามโทนภาพอ้างอิง: ฟ้าสว่าง ผืนน้ำสีฟ้าอมเขียว ป่าด้านขวาอยู่ใกล้ ป่าด้านซ้ายอยู่ไกล และพื้นที่กลางภาพเปิดโล่ง **ไม่มีเหรียญ โลโก้บนฉาก หรือข้อความโฆษณา**
 
+## เปิดดูเว็บ
+
+- [เปิดเว็บพร้อมปุ่มควบคุม](https://blu-mangrove-sfomiv.v2.appdeploy.ai/)
+- [เปิดเฉพาะฉากหลัง ไม่มีปุ่มควบคุม](https://blu-mangrove-sfomiv.v2.appdeploy.ai/?clean=1)
+
+Preview นี้ deploy แบบ manual จาก implementation commit `db6c32f` ไม่ได้เชื่อม auto-deploy เมื่อ push GitHub
+
 ## สิ่งที่ทำ
 
 - ต้นโกงกางแบบ procedural 142 ต้น มีลำต้น กิ่ง รากค้ำยัน และใบโค้งแบบ instancing ประมาณ 90,275 ใบในโหมดเดสก์ท็อป
@@ -72,5 +79,15 @@ npm run build:standalone
 npm test
 npm run build:standalone
 ```
+
+ผลตรวจในสภาพแวดล้อมพัฒนา:
+
+- Unit tests: ผ่าน 8/8
+- JavaScript syntax checks: ผ่าน
+- Standalone HTML build: ผ่าน (51,394 bytes)
+- Shader/geometry validation: เรนเดอร์ผ่าน EGL / OpenGL ES 3.2; shaders ทั้ง 6 compile ผ่าน, programs ทั้ง 3 link ผ่าน, reflection framebuffer complete และไม่มี GL error
+- Chromium fallback/UI: ตรวจที่ 1440×900 และ 375×667 — ภาพสำรอง, ปิดปุ่ม 3D ที่ใช้ไม่ได้, retry, ซ่อน/แสดง toolbar, ปุ่ม H และไม่มี page overflow ผ่าน
+- Chromium ในสภาพแวดล้อมพัฒนาไม่อนุญาต WebGL จึงยังไม่ใช่การยืนยัน browser 3D end-to-end หรือประสิทธิภาพบนอุปกรณ์จริงทุกชนิด
+- AppDeploy รายงานสถานะ ready และไม่มี frontend/backend errors ใน status response; status ไม่ได้ส่งผล e2e แยกรายกรณี
 
 ไม่มีการเพิ่ม CI/CD หรือ workflow ที่ deploy อัตโนมัติ
