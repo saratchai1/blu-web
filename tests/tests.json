@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Explore the mangrove and pause its movement",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "3D forest and water presentation",
+      "pause and resume",
+      "daylight and evening lighting"
+    ],
+    "description": "Verifies a scenery-only page has working motion and lighting controls, or explicitly reports unavailable WebGL instead of a blank canvas.",
+    "steps": [
+      "Open the app. The page must show a mangrove scene without a coin or marketing text.",
+      "When 3D is available, click the pause control and confirm it changes to a play control; resume it.",
+      "Change the lighting to evening and back to daylight. When WebGL is unavailable, verify the static-scene notice and disabled 3D controls instead."
+    ],
+    "expected": "A visible mangrove scene is present. Supported devices can pause, resume and switch light; unsupported devices clearly show the static fallback."
+  },
+  {
+    "name": "Move around and restore the view on mobile",
+    "viewport": "mobile",
+    "covers": [
+      "responsive layout",
+      "touch drag",
+      "bounded camera",
+      "reset camera",
+      "hide and restore toolbar"
+    ],
+    "description": "Verifies mobile users can explore without scrolling the document and restore the scene controls.",
+    "steps": [
+      "Open the app on mobile. When 3D is available, drag the scene horizontally and press the reset-view control.",
+      "Hide the control toolbar using its eye-off control.",
+      "Restore controls using the eye control."
+    ],
+    "expected": "The page stays within the viewport. The toolbar disappears and can be restored, and on WebGL-capable devices reset restores the initial view after dragging."
+  },
+  {
+    "name": "Recover from a deliberate static fallback",
+    "viewport": "desktop",
+    "covers": [
+      "WebGL-unavailable fallback",
+      "disabled unavailable controls",
+      "retry 3D initialization"
+    ],
+    "description": "Verifies a failed 3D initialization has a usable visible fallback and a recovery action.",
+    "steps": [
+      "Open the current app URL with fallback=1 in its query string.",
+      "Confirm the static-scene notice and that motion, lighting and reset controls are disabled.",
+      "Click the retry-3D button."
+    ],
+    "expected": "The fallback is never blank. Retry starts the 3D scene and enables its controls on a supported device, or retains an explicit fallback notice and disabled 3D controls on an unsupported device."
+  },
+  {
+    "name": "Use keyboard controls and a clean background",
+    "viewport": "desktop",
+    "covers": [
+      "keyboard-accessible controls",
+      "hide/show shortcut",
+      "fullscreen handling",
+      "clean background mode"
+    ],
+    "description": "Verifies controls are keyboard-accessible and the background-only URL contains no visible toolbar.",
+    "steps": [
+      "Use Tab to reach a scene control and confirm focus is visible. Press H to hide controls and H again to restore them.",
+      "When the fullscreen control is available, use it to enter and exit fullscreen. A browser denial must show a visible notice rather than an uncaught error.",
+      "Open the current app URL with clean=1 in its query string."
+    ],
+    "expected": "Keyboard focus is visible, H restores hidden controls, and clean mode displays the mangrove scene without toolbar, hint or show-controls button."
+  }
+]
