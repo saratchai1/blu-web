@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e4f2f2">
+  <meta name="description" content="ฉากป่าชายเลน 3D ริมผืนน้ำ แสงธรรมชาติ และใบไม้ไหว — BLU Mangrove">
+  <title>BLU · Mangrove</title>
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg">
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+  <main id="experience" aria-label="ฉากป่าชายเลนสามมิติ">
+    <div id="fallback" aria-hidden="true"></div>
+    <canvas id="scene" tabindex="0" role="img" aria-label="ป่าชายเลน 3D ลากเพื่อมองรอบ เลื่อนเพื่อซูม ใช้ปุ่มลูกศรเพื่อเปลี่ยนมุมมอง"></canvas>
+    <div class="lens" aria-hidden="true"></div>
+    <div id="loader" role="status"><span class="loader-mark"></span><span>กำลังเปิดฉากป่าชายเลน</span></div>
+    <div id="hint" class="hint">ลากเพื่อมองรอบ <span>·</span> เลื่อนเพื่อสำรวจ</div>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <section id="settings" class="glass-panel" aria-label="ตั้งค่าฉาก" hidden>
+      <div class="panel-heading"><span>บรรยากาศ</span><span class="eyebrow">MANGROVE</span></div>
+      <div class="light-options" role="group" aria-label="แสงของฉาก">
+        <button data-light="morning" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M3 17h18M6 13a6 6 0 0 1 12 0M12 2v3M4 6l2 2m14-2-2 2M2 12h2m16 0h2"/></svg>แสงเช้า</button>
+        <button data-light="noon" aria-pressed="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>กลางวัน</button>
+        <button data-light="evening" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M3 17h18M6 13a6 6 0 0 1 12 0M12 2v6m-3-3 3 3 3-3M3 21h18"/></svg>แสงเย็น</button>
+      </div>
+      <label class="quality-row" for="quality"><span>รายละเอียดภาพ</span><select id="quality"><option value="auto">อัตโนมัติ</option><option value="high">สูง</option><option value="low">ประหยัดพลังงาน</option></select></label>
+      <button id="reset" class="reset-button"><svg viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/></svg>กลับมุมมองเริ่มต้น</button>
+      <p class="panel-note">เฉพาะธรรมชาติ ไม่มีเหรียญหรือข้อความโฆษณา</p>
+    </section>
+    <nav id="controls" class="controls" aria-label="ควบคุมฉาก">
+      <button id="motion" class="icon-button" title="หยุดการเคลื่อนไหว" aria-label="หยุดการเคลื่อนไหว" aria-pressed="false"><svg viewBox="0 0 24 24"><path id="motion-icon" d="M9 5v14M15 5v14"/></svg></button>
+      <button id="fullscreen" class="icon-button" title="เต็มหน้าจอ" aria-label="เต็มหน้าจอ"><svg viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+      <span class="divider" aria-hidden="true"></span>
+      <button id="settings-toggle" class="icon-button" title="ตั้งค่าฉาก" aria-label="ตั้งค่าฉาก" aria-expanded="false" aria-controls="settings"><svg viewBox="0 0 24 24"><path d="M4 7h7m4 0h5M4 17h3m4 0h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
+    </nav>
+    <noscript><style>#loader{display:none}</style><div class="no-script">เปิด JavaScript เพื่อชมฉากป่าชายเลน 3D</div></noscript>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

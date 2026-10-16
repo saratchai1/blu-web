@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Explore and reset the mangrove scene",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": ["3D scene", "drag camera", "zoom limits", "camera reset", "unobstructed background"],
+    "description": "Explore the live mangrove backdrop, then return to the original composition.",
+    "steps": ["Open the scene and confirm trees, stilt roots, sky, and water are visible without a coin or hero advertisement", "Drag the scene and scroll to zoom", "Open ตั้งค่าฉาก and select กลับมุมมองเริ่มต้น"],
+    "expected": "The camera changes on interaction and resets to the original open-estuary view. The page has no horizontal overflow."
+  },
+  {
+    "name": "Change and retain the lighting preset",
+    "viewport": "desktop",
+    "covers": ["morning lighting", "noon lighting", "evening lighting", "local preference persistence", "settings dismissal"],
+    "description": "Lighting controls update the scene and preserve the user's selection.",
+    "steps": ["Open ตั้งค่าฉาก", "Select กลางวัน, then แสงเย็น", "Refresh the page without query-string overrides", "Open settings and verify แสงเย็น remains selected", "Press Escape"],
+    "expected": "The sky, light, and water change with the preset; evening remains selected after refresh. Escape closes settings and returns focus to the settings button."
+  },
+  {
+    "name": "Pause and navigate accessibly",
+    "viewport": "desktop",
+    "covers": ["pause and resume", "keyboard camera controls", "reduced motion", "fullscreen support or visible rejection", "hidden-tab suspension"],
+    "description": "Motion can be stopped while camera and accessibility controls remain usable.",
+    "steps": ["Select หยุดการเคลื่อนไหว", "Focus the canvas and use arrow keys, plus/minus, and 0", "Select เล่นการเคลื่อนไหว", "Try เต็มหน้าจอ and leave it again", "With the operating-system reduced-motion preference enabled, reload the page"],
+    "expected": "Automatic animation pauses and resumes; keyboard navigation and reset work. Fullscreen opens or displays a clear unsupported message. Reduced motion starts paused."
+  },
+  {
+    "name": "Mobile settings and quality selection",
+    "viewport": "mobile",
+    "covers": ["responsive composition", "touch navigation", "quality switching", "preference persistence", "small-screen controls"],
+    "description": "The mobile view and controls remain within the viewport at either quality level.",
+    "steps": ["Drag the scene using touch", "Open ตั้งค่าฉาก", "Change รายละเอียดภาพ to ประหยัดพลังงาน", "Select แสงเช้า", "Refresh the page"],
+    "expected": "The forest and water remain visible, controls are reachable without scrolling, and the quality preference survives refresh."
+  },
+  {
+    "name": "Graceful graphics failure and recovery",
+    "viewport": "desktop",
+    "covers": ["WebGL unavailable fallback", "context loss and restoration", "render failure message", "disabled unavailable controls", "invalid query guardrails"],
+    "description": "A failed graphics context never leaves a blank screen or endless loading overlay.",
+    "steps": ["Open the page with WebGL 2 unavailable", "Confirm a fallback image and Thai explanation are visible and motion/reset/quality controls are disabled", "In a WebGL-capable browser simulate context loss and restoration", "Open the page with quality=invalid and light=invalid"],
+    "expected": "A usable static fallback is shown when 3D is unavailable. A restored context rebuilds the scene. Invalid query values fall back to supported defaults."
+  }
+]
